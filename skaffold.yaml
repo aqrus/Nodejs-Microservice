@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy: 
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local: 
+    push: false
+  artifacts:
+    - image: service/auth
+      context: auth
+      docker: # chỉ định tên của container trong dockerfile
+        dockerfile: Dockerfile
+      sync: # watch all file changes in the current directory
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
