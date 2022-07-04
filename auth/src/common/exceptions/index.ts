@@ -1,2 +1,3 @@
 import HttpException from './http.exception';
-export default HttpException;
+import messageException from './message.exception';
+export {HttpException , messageException};

@@ -1,3 +1,3 @@
-import AuthRoute from "./auth.router";
-
-export { AuthRoute };
+import AuthRoute from "./auth.route";
+import { TokenData } from "./auth.interfaces";
+export { AuthRoute, TokenData };

@@ -1,12 +1,13 @@
 import 'dotenv/config';
 import App from './app';
 import { validateEnv } from './common/utils';
-import AuthRoute from './api/auth/auth.router';
-
+import AuthRoute from './api/auth/auth.route';
+import UserRoute from './api/user/user.route';
 validateEnv()
 
 const routes = [
-    new AuthRoute()
+    new AuthRoute(),
+    new UserRoute()
 ];
 
 const app = new App(routes);

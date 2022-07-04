@@ -1,3 +1,4 @@
 import logger from "./logger";
 import validateEnv from "./validate_env";
-export{ logger, validateEnv }
+import {isEmptyObject} from "./helpers";
+export{ logger, validateEnv, isEmptyObject }

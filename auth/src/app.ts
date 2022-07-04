@@ -1,6 +1,6 @@
 import { IRoute } from './common/interfaces';
 import express from 'express';
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 import cors from 'cors';
 import { logger } from './common/utils';
 import { errorMiddleware } from './common/middleware';
@@ -14,7 +14,7 @@ class App {
         console.log(process.env.NODE_ENV);
         this.port = process.env.PORT || 3000;
         this.production = process.env.NODE_ENV === 'production';
-        // this.connectToDatabase();
+        this.connectToDatabase();
         this.initializeMiddleware();
         this.initializeRoutes(routes);
         this.initializeErrorMiddleware();
@@ -52,22 +52,17 @@ class App {
         })
     }
     //connect to db
-    // private connectToDatabase() {
+    private connectToDatabase() {
 
-    //     const connectionString = process.env.MONGODB_URI;
-    //     if (!connectionString) {
-    //         logger.info('Connection string is Invalid');
-    //         return;
-    //     }
-    //     mongoose.connect(connectionString, {
-    //         useNewUrlParser: true,
-    //         useUnifiedTopology: true,
-    //         useFindAndModify: true,
-    //         useCreateIndex: true,
-    //     }).catch((error: any) => {
-    //         logger.error(error);
-    //     })
-    //     logger.info('connect success');
-    // }
+        const connectionString = process.env.MONGODB_URI;
+        if (!connectionString) {
+            logger.info('Connection string is Invalid');
+            return;
+        }
+        mongoose.connect(connectionString, ).catch((error: any) => {
+            logger.error(error);
+        })
+        logger.info('connect success');
+    }
 }
 export default App;

@@ -1,10 +1,13 @@
 import { IRoute } from "../../common/interfaces";
 import { Router } from "express";
+import AuthController from "./auth.controller";
+import { validationMiddleware } from "../../common/middleware";
+import LoginDto from "./dtos/auth.dto";
 
 export default class AuthRoute implements IRoute {
     public path = '/api/v1/auth';
     public router = Router();
-
+    private authController = new AuthController();
     constructor (){
         this.initializeRoutes();
     }
@@ -17,9 +20,8 @@ export default class AuthRoute implements IRoute {
     private initializeRoutes() {
         this.router.post(
             this.signingPath,
-            (req, res) => {
-                res.send('Hello World!');
-            }
+            validationMiddleware(LoginDto, true),
+            this.authController.login
         );
         this.router.post(
             this.signupPath,
