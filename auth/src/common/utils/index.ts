@@ -1,6 +1,6 @@
 import logger from "./logger";
 import validateEnv from "./validate_env";
-import {isEmptyObject} from "./helpers";
+import {isEmptyObject, setCookies} from "./helpers";
 import Cloudinary from "./cloudinary";
 import constant from "./constant.utils";
-export{ logger, validateEnv, isEmptyObject, Cloudinary, constant}
+export{ logger, validateEnv, isEmptyObject, setCookies, Cloudinary, constant}

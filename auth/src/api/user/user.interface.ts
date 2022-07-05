@@ -9,4 +9,5 @@ export default interface IUser {
         public_id: string;
     };
     getJWToken: () => string;
+    comparePassword: (password: string) => Promise<boolean>;
 }
