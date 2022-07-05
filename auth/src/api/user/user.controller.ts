@@ -7,8 +7,12 @@ export default class UserController {
     public register = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const model: RegisterDto = req.body;
-            const a = await this.UserService.register(model)
-            return model
+            const image = req.files;
+            const user = await this.UserService.register(model, image);
+            req.session = {
+                jwt: user.getJWToken()
+            }
+            res.status(201).json(user)
         }catch (error){
             next(error);
         }

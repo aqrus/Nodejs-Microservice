@@ -6,6 +6,9 @@ const validateEnv = ()=>{
     MONGODB_URI: str(),
     JWT_TOKEN_SECRET: str(),
     JWT_EXPIRESTIME: str(),
+    CLOUDINARY_API_KEY: str(),
+    CLOUDINARY_API_SECRET: str(),
+    CLOUDINARY_CLOUD_NAME: str()
   })
 }
 
