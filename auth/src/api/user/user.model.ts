@@ -11,6 +11,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        required: true,
+        default: "user"
+    },
     email: {
         type: String,
         required: true,
@@ -53,9 +58,10 @@ UserSchema.methods.getJWToken = function (): string {
     return jwt.sign(
         { 
             id: this._id,
-            email: this.email 
+            role: this.role
         },
         process.env.JWT_TOKEN_SECRET!, 
         { expiresIn: process.env.JWT_TOKEN_EXPIRES_IN } );
 }
+//create the paginated model
 export default mongoose.model<IUser & mongoose.Document>("user", UserSchema);

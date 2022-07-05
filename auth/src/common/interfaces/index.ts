@@ -1,2 +1,3 @@
 import IRoute from "./routes.interface";
-export {IRoute};
+import TokenData from "./dataToken.interface";
+export {IRoute, TokenData};

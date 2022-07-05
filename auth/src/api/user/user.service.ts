@@ -25,4 +25,51 @@ export default class UserService {
         }
         return await newUser.save();
     }
+    
+    public getCurrentUser = async (id: string): Promise<IUser> => {
+        const user = await this.UserSchema.findById(id);
+        if (!user) {
+            throw new HttpException(409,messageException.msg_005);
+        }
+        return user;
+    }
+
+    public getAllUsers = async (): Promise<IUser[]> => {
+        return await this.UserSchema.find({});
+    }
+
+    public getUserById = async (id: string): Promise<IUser> => {
+        const user = await this.UserSchema.findById(id);
+        if (!user) {
+            throw new HttpException(404,messageException.msg_005);
+        }
+        return user;
+    }
+
+    public updateUser = async (id: string, model: RegisterDto, image: fileUpload.FileArray | undefined): Promise<IUser> => {
+        const user = await this.UserSchema.findById(id);
+        if (!user) {
+            throw new HttpException(404,messageException.msg_005);
+        }
+        // cloudinary upload image
+        const cloudinary = new Cloudinary();
+        const imageResult = await cloudinary.upload(image, constant.folder.avatar);
+        if(imageResult) {
+            user.avatar.urlImage = imageResult.url;
+            user.avatar.public_id = imageResult.public_id;   
+        }
+        user.firt_name = model.firt_name;
+        user.last_name = model.last_name;
+        user.email = model.email;
+        user.password = model.password;
+        return await user.save();
+    }
+
+    public deleteUser = async (id: string): Promise<IUser> => {
+        const user = await this.UserSchema.findById(id);
+        if (!user) {
+            throw new HttpException(404,messageException.msg_005);
+        }
+        return await user.remove();
+    }
 }

@@ -1,7 +1,7 @@
 import { IRoute } from "../../common/interfaces";
 import { Router } from "express";
 import AuthController from "./auth.controller";
-import { validationMiddleware } from "../../common/middleware";
+import { authMiddleware, validationMiddleware } from "../../common/middleware";
 import LoginDto from "./dtos/auth.dto";
 
 export default class AuthRoute implements IRoute {
@@ -13,33 +13,19 @@ export default class AuthRoute implements IRoute {
     }
 
     private signingPath: string = this.path + '/signing';
-    private signoutPath: string = this.path + '/signout';
-    private signupPath: string = this.path + '/signup';
-    private currentUserPath: string = this.path + '/me';
+    private logoutPath: string = this.path + '/logout';
 
     private initializeRoutes() {
         this.router.post(
             this.signingPath,
             validationMiddleware(LoginDto, true),
+            authMiddleware,
             this.authController.login
         );
         this.router.post(
-            this.signupPath,
-            (req, res) => {
-                res.send('Hello World!');
-            }
-        );
-        this.router.get(
-            this.currentUserPath,
-            (req, res) => {
-                res.send('Hello World!');
-            }
-        );
-        this.router.get(
-            this.signoutPath,
-            (req, res) => {
-                res.send('Hello World!');
-            }
-        );
+            this.logoutPath,
+            authMiddleware,
+            this.authController.logout
+        )
     }
 }
