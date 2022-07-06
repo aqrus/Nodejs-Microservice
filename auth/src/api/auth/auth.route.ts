@@ -19,13 +19,12 @@ export default class AuthRoute implements IRoute {
         this.router.post(
             this.signingPath,
             validationMiddleware(LoginDto, true),
-            authMiddleware,
             this.authController.login
         );
         this.router.post(
             this.logoutPath,
             authMiddleware,
             this.authController.logout
-        )
+        );
     }
 }

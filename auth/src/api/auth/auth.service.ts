@@ -6,7 +6,7 @@ export default class authService {
     public login = async (email: string, password: string): Promise<IUser> => {
         const user = await this.UserSchema.findOne({ email });
         if (!user) {
-            throw new HttpException(400, messageException.msg_002);
+            throw new HttpException(400, messageException.msg_005);
         }
         const isMatch = await user.comparePassword(password);
         if (!isMatch) {

@@ -1,5 +1,3 @@
-import paginate from 'mongoose-paginate-v2';
-
 export default interface IUser {
     _id: string;
     firt_name: string;

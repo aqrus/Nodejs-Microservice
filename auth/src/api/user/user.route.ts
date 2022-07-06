@@ -30,7 +30,7 @@ export default class UserRoute implements IRoute {
         this.router.get(
             this.getAllUsersPath,
             authMiddleware,
-            authMiddlewareAdmin,
+            // authMiddlewareAdmin,
             this.userController.getAllUsers
         );
         this.router.get(
