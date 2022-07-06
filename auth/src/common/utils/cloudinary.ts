@@ -16,4 +16,20 @@ export default class Cloudinary {
         return result;
     }
 
+    public delete = async (public_id: string): Promise<any> => {
+        const result = await this.cloudinary.uploader.destroy(public_id);
+        return result;
+    }
+
+    public update = async (public_id: string, image: fileUpload.FileArray | undefined): Promise<any> => {
+        if (!image) {
+            return null;
+        }
+        const result = await this.cloudinary.uploader.upload(image[0],{
+            folder: 'avatar',
+            public_id: public_id,
+        });
+        return result;
+    }
+
 }

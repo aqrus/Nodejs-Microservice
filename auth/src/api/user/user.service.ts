@@ -7,6 +7,7 @@ import fileUpload from "express-fileupload";
 import { Cloudinary, constant } from '../../common/utils';
 export default class UserService {
     private UserSchema = UserSchema;
+    private cloudinary = new Cloudinary();
     public register = async (model: RegisterDto, image: fileUpload.FileArray | undefined): Promise<IUser> => { 
         if (isEmptyObject(model)) {
             throw new HttpException(400,messageException.msg_001);
@@ -17,8 +18,7 @@ export default class UserService {
         }
         const newUser = new this.UserSchema(model);
         // cloudinary upload image
-        const cloudinary = new Cloudinary();
-        const imageResult = await cloudinary.upload(image, constant.folder.avatar);
+        const imageResult = await this.cloudinary.upload(image, constant.folder.avatar);
         if(imageResult) {
             newUser.avatar.urlImage = imageResult.url;
             newUser.avatar.public_id = imageResult.public_id;   
@@ -51,12 +51,11 @@ export default class UserService {
         if (!user) {
             throw new HttpException(404,messageException.msg_005);
         }
-        // cloudinary upload image
-        const cloudinary = new Cloudinary();
-        const imageResult = await cloudinary.upload(image, constant.folder.avatar);
+        // cloudinary update image
+        const imageResult = await this.cloudinary.update(user.avatar.public_id, image);
         if(imageResult) {
             user.avatar.urlImage = imageResult.url;
-            user.avatar.public_id = imageResult.public_id;   
+            user.avatar.public_id = imageResult.public_id;
         }
         user.firt_name = model.firt_name;
         user.last_name = model.last_name;
@@ -69,6 +68,13 @@ export default class UserService {
         const user = await this.UserSchema.findById(id);
         if (!user) {
             throw new HttpException(404,messageException.msg_005);
+        }
+        //cloudinary delete image
+        
+        const imageResult = await this.cloudinary.delete(user.avatar.public_id);
+        if(imageResult) {
+            user.avatar.urlImage = imageResult.url;
+            user.avatar.public_id = imageResult.public_id;
         }
         return await user.remove();
     }

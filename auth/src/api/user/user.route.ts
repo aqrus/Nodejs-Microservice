@@ -14,9 +14,7 @@ export default class UserRoute implements IRoute {
     private registerPath: string = this.path + '/register';
     private currentUserPath: string = this.path + '/current-user';
     private getAllUsersPath: string = this.path + '/all-users';
-    private getUserPath: string = this.path + '/:id';
-    private updateUserPath: string = this.path + '/update/:id';
-    private deleteUserPath: string = this.path + '/delete/:id';
+    private userPath: string = this.path + '/:id';
     
     private initializeRoutes() {
         this.router.post(
@@ -36,19 +34,19 @@ export default class UserRoute implements IRoute {
             this.userController.getAllUsers
         );
         this.router.get(
-            this.getUserPath,
+            this.userPath,
             authMiddleware,
             authMiddlewareAdmin,
             this.userController.getUserById
         );
         this.router.put(
-            this.updateUserPath,
+            this.userPath,
             authMiddleware,
             validationMiddleware(RegisterDto, true),
             this.userController.updateUser
         );
         this.router.delete(
-            this.deleteUserPath,
+            this.userPath,
             authMiddleware,
             authMiddlewareAdmin,
             this.userController.deleteUser
