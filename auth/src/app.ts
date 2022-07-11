@@ -91,7 +91,7 @@ class App {
 
     //apply update files
     private initializeUpdateFiles() {
-        this.app.use(expressFileUpload)
+        this.app.use(expressFileUpload())
     }
 }
 export default App;

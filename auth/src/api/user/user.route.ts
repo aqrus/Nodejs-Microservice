@@ -1,5 +1,5 @@
 import { authMiddleware, authMiddlewareAdmin, validationMiddleware } from "../../common/middleware";
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import { IRoute } from "../../common/interfaces";
 import RegisterDto from "./dtos/registerUser.dto";
 import UserController from "./user.controller";

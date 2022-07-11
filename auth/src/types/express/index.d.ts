@@ -4,6 +4,8 @@ declare namespace Express{
       id: string,
       role: string
     },
-    
+    session: {
+      jwt: string
+    } | null
   }
 }
