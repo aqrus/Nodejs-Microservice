@@ -1,12 +1,12 @@
-import { IRoute } from './common/interfaces';
+import { IRoute } from '@sgticket-common/common';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieSession from 'cookie-session';
 import cloudinary from 'cloudinary';
 import expressFileUpload  from 'express-fileupload';
-import { logger } from './common/utils';
-import { errorMiddleware } from './common/middleware';
+import { logger } from '@sgticket-common/common';
+import { errorMiddleware } from '@sgticket-common/common';
 class App {
     public app: express.Application;
     public production: boolean;

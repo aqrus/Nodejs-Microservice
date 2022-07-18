@@ -1,7 +1,7 @@
-import { IRoute } from "../../common/interfaces";
+import { IRoute } from "@sgticket-common/common";
 import { Router } from "express";
 import AuthController from "./auth.controller";
-import { authMiddleware, validationMiddleware } from "../../common/middleware";
+import { authMiddleware, validationMiddleware } from "@sgticket-common/common";
 import LoginDto from "./dtos/auth.dto";
 
 export default class AuthRoute implements IRoute {

@@ -1,10 +1,10 @@
-import { HttpException, messageException} from "../../common/exceptions";
-import { isEmptyObject } from "../../common/utils";
+import { HttpException, messageException} from "@sgticket-common/common";
+import { isEmptyObject } from "@sgticket-common/common";
 import RegisterDto from "./dtos/registerUser.dto";
 import IUser from "./user.interface";
 import UserSchema from "./user.model";
 import fileUpload from "express-fileupload";
-import { Cloudinary, constant } from '../../common/utils';
+import { Cloudinary, constant } from '@sgticket-common/common';
 export default class UserService {
     private UserSchema = UserSchema;
     private cloudinary = new Cloudinary();

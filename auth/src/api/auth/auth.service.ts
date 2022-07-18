@@ -1,4 +1,4 @@
-import { HttpException, messageException } from "../../common/exceptions";
+import { HttpException, messageException } from "@sgticket-common/common";
 import { IUser, UserSchema } from "../user";
 
 export default class authService {

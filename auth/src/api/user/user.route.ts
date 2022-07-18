@@ -1,6 +1,6 @@
-import { authMiddleware, authMiddlewareAdmin, validationMiddleware } from "../../common/middleware";
+import { authMiddleware, authMiddlewareAdmin, validationMiddleware } from "@sgticket-common/common";
 import { NextFunction, Request, Response, Router } from "express";
-import { IRoute } from "../../common/interfaces";
+import { IRoute } from "@sgticket-common/common";
 import RegisterDto from "./dtos/registerUser.dto";
 import UserController from "./user.controller";
 
