@@ -2,10 +2,10 @@
   "name": "ticket",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest --detectOpenHandles --watchAll --no-cache",
-    "start": "ts-node-dev src/index.ts"
+    "start": "ts-node-dev src/server.ts"
   },
   "jest": {
     "preset": "ts-jest",
