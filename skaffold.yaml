@@ -16,6 +16,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: service/ticket
+      context: ticket
+      docker: # chỉ định tên của container trong dockerfile
+        dockerfile: Dockerfile
+      sync: # watch all file changes in the current directory
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     - image: gateway/client
       context: client
       docker: # chỉ định tên của container trong dockerfile

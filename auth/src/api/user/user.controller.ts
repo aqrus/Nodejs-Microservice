@@ -11,10 +11,9 @@ export default class UserController {
             const user = await this.UserService.register(model, image);
             req.session = {
                 jwt: user.getJWToken()
-            }
+            };
             res.status(201).json(user)
         }catch (error){
-            console.log(error)
             next(error);
         }   
     }
