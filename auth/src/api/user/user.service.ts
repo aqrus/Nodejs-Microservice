@@ -57,7 +57,7 @@ export default class UserService {
             user.avatar.urlImage = imageResult.url;
             user.avatar.public_id = imageResult.public_id;
         }
-        user.firt_name = model.firt_name;
+        user.first_name = model.first_name;
         user.last_name = model.last_name;
         user.email = model.email;
         user.password = model.password;

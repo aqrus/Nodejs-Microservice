@@ -8,13 +8,13 @@ export default class UserController {
         try {
             const model: RegisterDto = req.body;
             const image = req.files;
-            console.log('aa')
             const user = await this.UserService.register(model, image);
             req.session = {
                 jwt: user.getJWToken()
             }
             res.status(201).json(user)
         }catch (error){
+            console.log(error)
             next(error);
         }   
     }

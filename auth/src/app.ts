@@ -14,7 +14,6 @@ class App {
 
     constructor(routes: IRoute[]) {
         this.app = express();
-        console.log(process.env.NODE_ENV);
         this.port = process.env.PORT || 3000;
         this.production = process.env.NODE_ENV === 'production';
         this.initializeCookie();
