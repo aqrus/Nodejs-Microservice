@@ -1,2 +1,4 @@
 # Nodejs-Microservice
-Ecommerce microservice application
+install docker and run k8s
+install skaffold
+install NATS
