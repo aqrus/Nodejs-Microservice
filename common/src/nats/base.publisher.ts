@@ -1,5 +1,5 @@
 import { Stan } from 'node-nats-streaming';
-import { Subjects } from '../ultils';
+import  Subjects  from './subject.nats';
 
 interface IEvent {
     subject: Subjects;

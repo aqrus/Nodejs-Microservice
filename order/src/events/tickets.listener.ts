@@ -1,6 +1,5 @@
 import { Message } from "node-nats-streaming";
-import Listener from "../base.listener";
-import { Subjects } from "../../ultils";
+import { Listener, Subjects } from "@sgticket-common/common";
 import { ITicketCreatedEvent } from './tickets.interface';
 export class TicketCreatedListener extends Listener<ITicketCreatedEvent> {
     subject: Subjects.TicketCreated = Subjects.TicketCreated;

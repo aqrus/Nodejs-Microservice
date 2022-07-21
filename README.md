@@ -8,3 +8,7 @@ instead 'id-container-nats-streaming-server' by id of container run on docker in
 run: make fowarding
 #### seen nats client sub
 http://localhost:8222/streaming/clientsz?subs=1
+
+### work with common
+#### login : npm login
+#### publish : npm publish
