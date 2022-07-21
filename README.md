@@ -12,3 +12,6 @@ http://localhost:8222/streaming/clientsz?subs=1
 ### work with common
 #### login : npm login
 #### publish : npm publish
+
+## create secret
+kubectl create secret generic jwt-secret --from-literal=JWT_TOKEN_SECRET=microservice

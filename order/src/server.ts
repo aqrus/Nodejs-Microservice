@@ -1,11 +1,11 @@
 import 'dotenv/config';
-import App from './app';
+import App from '../app';
 import { validateEnv } from '@sgticket-common/common';
-import TicketRoute from './api/ticket/ticket.route';
+import OrderRoute from './api/order/order.route';
 validateEnv()
 
 const routes = [
-    new TicketRoute(),
+    new OrderRoute(),
 ];
 
 const app = new App(routes);
