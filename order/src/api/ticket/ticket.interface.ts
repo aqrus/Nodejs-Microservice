@@ -1,5 +1,6 @@
-export default interface ITicket {
-    _id: string;
+export interface ITicket {
+    id: string;
     title: string;
     price: number;
+    isReverved: () => Promise<boolean>;
 }

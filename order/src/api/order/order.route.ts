@@ -1,7 +1,7 @@
 import { authMiddleware, authMiddlewareAdmin, validationMiddleware } from "@sgticket-common/common";
 import { Router } from "express";
 import { IRoute } from "@sgticket-common/common";
-import TicketDto from "./dtos/order.dto";
+import OrderDto from "./dtos/order.dto";
 import OrderController from "./order.controller";
 
 export default class OrderRoute implements IRoute {
@@ -18,7 +18,7 @@ export default class OrderRoute implements IRoute {
     private initializeRoutes() {
         this.router.post(
             this.createOrderPath,
-            validationMiddleware(TicketDto, true),
+            validationMiddleware(OrderDto, true),
             this.OrderController.createOrder
         );
         this.router.get(
@@ -31,6 +31,12 @@ export default class OrderRoute implements IRoute {
             authMiddleware,
             // authMiddlewareAdmin,
             this.OrderController.getOrderById
+        );
+        this.router.delete(
+            this.order,
+            authMiddleware,
+            // authMiddlewareAdmin,
+            this.OrderController.cancelOrder
         );
     }
 }

@@ -1,7 +1,7 @@
-import IUser from './order.interface';
-import UserController from './order.controller';
+import IOrder from './order.interface';
+import OrderController from './order.controller';
 import RegisterDto from './dtos/order.dto';
-import UserRoute from './order.route';
-import UserService from './order.service';
-import UserSchema from './order.model';
-export { IUser, UserController, RegisterDto, UserRoute, UserService, UserSchema };
+import OrderRoute from './order.route';
+import OrderService from './order.service';
+import OrderSchema from './order.model';
+export { IOrder, OrderController, RegisterDto, OrderRoute, OrderService, OrderSchema };

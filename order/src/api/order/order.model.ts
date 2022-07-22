@@ -12,7 +12,7 @@ const OrderSchema = new mongoose.Schema({
         enum: Object.values(OrderStatus),
         default: OrderStatus.Created
     },
-    ticketId: {
+    ticket: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ticket'
     },
