@@ -577,10 +577,10 @@
     "semver" "^7.3.5"
     "tar" "^6.1.11"
 
-"@sgticket-common/common@^1.0.9":
-  "integrity" "sha512-GqT135LFwZO6TO3lILWnftnh2B6A+F/0xpBTZQx+IsF/9Z1r8+6Pn2KJ4QQ+gLzvlXGQCs/ex9NA2R9wgfHcUg=="
-  "resolved" "https://registry.npmjs.org/@sgticket-common/common/-/common-1.0.9.tgz"
-  "version" "1.0.9"
+"@sgticket-common/common@^1.0.10":
+  "integrity" "sha512-nUZ9SZxiUHNzAjVpeNk8hVSHQf7eu3JSjoT3AsoKkayLCDW4zBDLQRBcmmH9dyS54ped5sNz/ITIexAzyXk29g=="
+  "resolved" "https://registry.npmjs.org/@sgticket-common/common/-/common-1.0.10.tgz"
+  "version" "1.0.10"
   dependencies:
     "class-transformer" "^0.5.1"
     "class-validator" "^0.13.2"

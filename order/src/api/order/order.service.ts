@@ -39,14 +39,15 @@ export default class OrderService {
         // Publish an event saying that an order was created
         new OrderCreatedPublisher(natsWrapper.client).publish({
             id: newOrder.id,
+            version: newOrder.version,
             status: newOrder.status,
             userId: newOrder.userId,
             expiresAt: newOrder.expiresAt.toISOString(),
             ticket: {
-                id: ticket.id,
-                price: ticket.price
-            }
-        });
+              id: ticket.id,
+              price: ticket.price,
+            },
+          });
         return newOrder;
     }
 
@@ -70,13 +71,30 @@ export default class OrderService {
         order.status = OrderStatus.Cancelled;
         const newOrder = new this.OrderSchema(order);
         await newOrder.save();
-        new OrderCanncelledPublisher(natsWrapper.client).publish({
+        new OrderCanncelledPublisher (natsWrapper.client).publish({
             id: order.id,
-            status: order.status,
+            version: order.version,
             ticket: {
-                id: order.ticket
-            }
-        });
+                id: order.ticket,
+            },
+          });
+          
         return newOrder;
+    }
+
+    public async cancelOrderByExpiration(orderId: string): Promise<void> {
+        const order = await this.OrderSchema.findById(orderId);
+        if(!order){
+            throw new HttpException(404, 'Order_NOT_FOUND');
+        }
+        order.status = OrderStatus.Cancelled;
+        await order.save();
+        new OrderCanncelledPublisher (natsWrapper.client).publish({
+            id: order.id,
+            version: order.version,
+            ticket: {
+                id: order.ticket,
+            },
+          });
     }
 }

@@ -5,7 +5,7 @@ import cookieSession from 'cookie-session';
 import cloudinary from 'cloudinary';
 import expressFileUpload  from 'express-fileupload';
 import { logger, IRoute, errorMiddleware, natsWrapper } from '@sgticket-common/common';
-import { TicketUpdatedListener, TicketCreatedListener } from './events/order.listener';
+import { TicketUpdatedListener, TicketCreatedListener, ExpirationCompleteListener } from './events/order.listener';
 class App {
     public app: express.Application;
     public production: boolean;
@@ -105,6 +105,7 @@ class App {
 
         new TicketCreatedListener(natsWrapper.client).listen();
         new TicketUpdatedListener(natsWrapper.client).listen();
+        new ExpirationCompleteListener(natsWrapper.client).listen();
         
     }
 }

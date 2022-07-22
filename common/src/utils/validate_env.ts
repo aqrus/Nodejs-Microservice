@@ -11,7 +11,9 @@ const validateEnv = ()=>{
     CLOUDINARY_CLOUD_NAME: str(),
     NATS_CLIENT_ID: str(),
     NATS_URL: str(),
-    NATS_CLUSTER_ID: str()
+    NATS_CLUSTER_ID: str(),
+    REDIS_HOST: str(),
+    REDIS_PORT: str(),
   })
 }
 

@@ -1,6 +1,7 @@
 import { Message } from "node-nats-streaming";
-import { Listener, Subjects, ITicketCreatedEvent, ITicketUpdatedEvent } from "@sgticket-common/common";
+import { Listener, Subjects, ITicketCreatedEvent, ITicketUpdatedEvent, ExpirationCompleteEvent } from '@sgticket-common/common';
 import { TicketService } from "../api/ticket";
+import { OrderService } from "../api/order";
 export class TicketCreatedListener extends Listener<ITicketCreatedEvent> {
     subject: Subjects.TicketCreated = Subjects.TicketCreated;
     queueGroupName = 'orders-service';
@@ -19,6 +20,17 @@ export class TicketUpdatedListener extends Listener<ITicketUpdatedEvent> {
     async onMessage(data: ITicketUpdatedEvent['data'], msg: Message) {
         const { id, title, price, version } = data;
         await this.TicketService.updateTickets(id, title, price, version);
+        msg.ack();
+    }
+}
+
+export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent> {
+    subject: Subjects.ExpirationComplete = Subjects.ExpirationComplete;
+    queueGroupName = 'orders-service';
+    OrderService = new OrderService();
+    async onMessage(data: ExpirationCompleteEvent['data'], msg: Message) {
+        const { orderId } = data;
+        await this.OrderService.cancelOrderByExpiration(orderId);
         msg.ack();
     }
 }
