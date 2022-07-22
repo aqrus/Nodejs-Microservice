@@ -5,6 +5,7 @@ import cookieSession from 'cookie-session';
 import cloudinary from 'cloudinary';
 import expressFileUpload  from 'express-fileupload';
 import { logger, IRoute, errorMiddleware, natsWrapper } from '@sgticket-common/common';
+import { OrderCreatedListener, OrderCancelledListener } from './events/tickets.listener';
 class App {
     public app: express.Application;
     public production: boolean;
@@ -99,6 +100,9 @@ class App {
             console.log('NATS connection closed');
             process.exit();
         });
+        new OrderCreatedListener(natsWrapper.client).listen();
+        new OrderCancelledListener(natsWrapper.client).listen();
+
         process.on('SIGINT', () => natsWrapper.client.close());
         process.on('SIGTERM', () => natsWrapper.client.close());
         

@@ -5,4 +5,5 @@ export default interface IOrder {
     status: OrderStatus;
     ticket: string;
     expiresAt: Date;
+    version: number;
 }

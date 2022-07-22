@@ -1,10 +1,7 @@
-import { TicketCreatedListener } from './tickets.listener';
-import { IOrderCreatedEvent, IOrderCancelledEvent } from './order.interface';
+import { TicketCreatedListener } from './order.listener';
 import { OrderCreatedPublisher, OrderCanncelledPublisher } from './order.publisher';
 export {
     TicketCreatedListener,
-    IOrderCreatedEvent,
     OrderCreatedPublisher,
-    OrderCanncelledPublisher,
-    IOrderCancelledEvent
+    OrderCanncelledPublisher
 };

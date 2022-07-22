@@ -1,6 +1,7 @@
 import { OrderStatus } from "@sgticket-common/common";
 import { OrderSchema } from "../order";
 import mongoose from "mongoose";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 import { ITicket } from "./ticket.interface";
 
 const TicketSchema = new mongoose.Schema({
@@ -23,6 +24,8 @@ const TicketSchema = new mongoose.Schema({
     timestamps: true
 });
 
+TicketSchema.set('versionKey', 'version');
+TicketSchema.plugin(updateIfCurrentPlugin);
 TicketSchema.methods.isReserved = async function() {
     const existingOrder = await OrderSchema.findOne({
         ticket: this.id,

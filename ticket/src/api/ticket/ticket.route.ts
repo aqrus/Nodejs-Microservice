@@ -21,6 +21,12 @@ export default class TicketRoute implements IRoute {
             validationMiddleware(TicketDto, true),
             this.TicketController.createTickets
         );
+        this.router.put(
+            this.ticket,
+            // authMiddlewareAdmin,
+            validationMiddleware(TicketDto, true),
+            this.TicketController.updateTicket
+        );
         this.router.get(
             this.getAllTicketPath,
             authMiddleware,

@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import ITicket from './ticket.interface';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
+
 const TicketSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -12,6 +14,9 @@ const TicketSchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true
+    },
+    orderId: {
+        type: String
     }
 }, { 
     toJSON: {
@@ -23,5 +28,6 @@ const TicketSchema = new mongoose.Schema({
     },
     timestamps: true 
 });
-//create the paginated model
+TicketSchema.set('versionKey', 'version');
+TicketSchema.plugin(updateIfCurrentPlugin);
 export default mongoose.model<ITicket & mongoose.Document>("Ticket", TicketSchema);

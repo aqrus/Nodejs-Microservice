@@ -1,5 +1,4 @@
-import { Publisher, Subjects } from "@sgticket-common/common";
-import { IOrderCreatedEvent, IOrderCancelledEvent } from "./order.interface";
+import { Publisher, Subjects, IOrderCreatedEvent, IOrderCancelledEvent } from "@sgticket-common/common";
 
 export class OrderCreatedPublisher extends Publisher<IOrderCreatedEvent> {
     subject: Subjects.OrderCreated = Subjects.OrderCreated;

@@ -1,9 +1,11 @@
-import { OrderStatus, Subjects } from "@sgticket-common/common";
+import Subjects  from "./subject.nats";
+import OrderStatus from "./order-status.nats";
 
 export interface IOrderCreatedEvent {
     subject: Subjects.OrderCreated;
     data: {
         id: string;
+        version: number;
         status: OrderStatus;
         userId: string;
         expiresAt: string;
@@ -18,7 +20,7 @@ export interface IOrderCancelledEvent {
     subject: Subjects.OrderCancelled;
     data: {
         id: string;
-        status: OrderStatus;
+        version: number;
         ticket: {
             id: string
         };

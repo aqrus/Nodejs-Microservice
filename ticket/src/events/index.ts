@@ -1,8 +1,7 @@
-import { TicketCreatedListener } from './tickets.listener';
-import { ITicketCreatedEvent } from './tickets.interface';
-import { TicketCreatedPublisher } from './tickets.publisher';
+import { OrderCreatedListener } from './tickets.listener';
+import { TicketCreatedPublisher, TicketUpdatedPublisher } from './tickets.publisher';
 export {
-    TicketCreatedListener,
-    ITicketCreatedEvent,
-    TicketCreatedPublisher
+    OrderCreatedListener,
+    TicketCreatedPublisher,
+    TicketUpdatedPublisher
 };

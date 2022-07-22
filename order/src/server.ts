@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import App from '../app';
+import App from './app';
 import { validateEnv } from '@sgticket-common/common';
 import OrderRoute from './api/order/order.route';
 validateEnv()

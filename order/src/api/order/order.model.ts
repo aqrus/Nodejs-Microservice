@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import IOrder from './order.interface';
 import { OrderStatus } from '@sgticket-common/common';
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
+
 const OrderSchema = new mongoose.Schema({
     userId: {
         type: String,
@@ -29,5 +31,7 @@ const OrderSchema = new mongoose.Schema({
     },
     timestamps: true 
 });
-//create the paginated model
+
+OrderSchema.set('versionKey', 'version');
+OrderSchema.plugin(updateIfCurrentPlugin);
 export default mongoose.model<IOrder & mongoose.Document>("Ticket", OrderSchema);

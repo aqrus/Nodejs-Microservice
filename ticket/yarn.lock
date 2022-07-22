@@ -577,10 +577,10 @@
     "semver" "^7.3.5"
     "tar" "^6.1.11"
 
-"@sgticket-common/common@^1.0.5":
-  "integrity" "sha512-/T4Q48h2vmDJ8YGQ1Fu/HuIPKoV0sMn76CIbLhn3bJnHobnwaCg0Xh1ZTQeYNBDWNgf2rsqo9xHhw+v1aTPQdQ=="
-  "resolved" "https://registry.npmjs.org/@sgticket-common/common/-/common-1.0.5.tgz"
-  "version" "1.0.5"
+"@sgticket-common/common@^1.0.9":
+  "integrity" "sha512-GqT135LFwZO6TO3lILWnftnh2B6A+F/0xpBTZQx+IsF/9Z1r8+6Pn2KJ4QQ+gLzvlXGQCs/ex9NA2R9wgfHcUg=="
+  "resolved" "https://registry.npmjs.org/@sgticket-common/common/-/common-1.0.9.tgz"
+  "version" "1.0.9"
   dependencies:
     "class-transformer" "^0.5.1"
     "class-validator" "^0.13.2"
@@ -1488,7 +1488,7 @@
     "depd" "~2.0.0"
     "keygrip" "~1.1.0"
 
-"core-js@3.6.5":
+"core-js@^3.2.1", "core-js@3.6.5":
   "integrity" "sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA=="
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.6.5.tgz"
   "version" "3.6.5"
@@ -2755,7 +2755,7 @@
     "jwa" "^1.4.1"
     "safe-buffer" "^5.0.1"
 
-"kareem@2.4.1":
+"kareem@^2.3.0", "kareem@2.4.1":
   "integrity" "sha512-aJ9opVoXroQUPfovYP5kaj2lM7Jn02Gw13bL0lg9v0V7SaUc0qavPs0Eue7d2DcC3NjqI6QAUElXNsuZSeM+EA=="
   "resolved" "https://registry.npmjs.org/kareem/-/kareem-2.4.1.tgz"
   "version" "2.4.1"
@@ -3055,7 +3055,16 @@
   optionalDependencies:
     "saslprep" "^1.0.3"
 
-"mongoose@*", "mongoose@^6.4.1":
+"mongoose-update-if-current@^1.4.0":
+  "integrity" "sha512-Rau2nvdiLExqXrSOwMMgDYQgf/fwTJQpPidTcT7C9UMQ282gTKXjDuh5vrjVvVQpfuvkiPis0tGHdXffaD54bg=="
+  "resolved" "https://registry.npmjs.org/mongoose-update-if-current/-/mongoose-update-if-current-1.4.0.tgz"
+  "version" "1.4.0"
+  dependencies:
+    "core-js" "^3.2.1"
+    "kareem" "^2.3.0"
+    "regenerator-runtime" "^0.13.5"
+
+"mongoose@*", "mongoose@^6.4.1", "mongoose@>=5.0.0":
   "integrity" "sha512-2E56DnJ4z5pWnBH4/pFGWuDFRn1Wt/JxU31Hcu0ZZtsd8I6piHavLawC9ND6GgyBpHov/aVLPLXtzB+HPKeKQg=="
   "resolved" "https://registry.npmjs.org/mongoose/-/mongoose-6.4.5.tgz"
   "version" "6.4.5"
@@ -3479,6 +3488,11 @@
   "version" "3.6.0"
   dependencies:
     "picomatch" "^2.2.1"
+
+"regenerator-runtime@^0.13.5":
+  "integrity" "sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA=="
+  "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
+  "version" "0.13.9"
 
 "require-directory@^2.1.1":
   "integrity" "sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q=="

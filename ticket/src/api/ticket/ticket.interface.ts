@@ -1,6 +1,8 @@
 export default interface ITicket {
-    _id: string;
+    id: string;
     title: string;
     price: number;
-    userId: string
+    userId: string;
+    version: number;
+    orderId?: string;
 }

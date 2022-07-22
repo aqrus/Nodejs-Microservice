@@ -1,0 +1,24 @@
+import Subjects from "./subject.nats";
+
+export interface ITicketCreatedEvent {
+    subject: Subjects.TicketCreated;
+    data: {
+        id: string;
+        version: number;
+        title: string;
+        price: number;
+        userId: string;
+    };
+}
+
+export interface ITicketUpdatedEvent {
+    subject: Subjects.TicketUpdated;
+    data: {
+        id: string;
+        version: number;
+        title: string;
+        price: number;
+        userId: string;
+        orderId?: string;
+    };
+}

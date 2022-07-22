@@ -1,7 +1,7 @@
-import IUser from './ticket.interface';
-import UserController from './ticket.controller';
+import ITicket from './ticket.interface';
+import TicketController from './ticket.controller';
 import RegisterDto from './dtos/ticket.dto';
-import UserRoute from './ticket.route';
-import UserService from './ticket.service';
-import UserSchema from './ticket.model';
-export { IUser, UserController, RegisterDto, UserRoute, UserService, UserSchema };
+import TicketRoute from './ticket.route';
+import TicketService from './ticket.service';
+import TicketSchema from './ticket.model';
+export { ITicket, TicketController, RegisterDto, TicketRoute, TicketService, TicketSchema };

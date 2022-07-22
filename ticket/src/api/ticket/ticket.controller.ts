@@ -14,6 +14,16 @@ export default class TicketController {
             next(error);
         }
     }
+    public updateTicket = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const id: string = req.params.id;
+            const model: TicketDto = req.body;
+            const updatedTicket: ITicket = await this.TicketService.updateTicket(id, model);
+            res.status(200).json(updatedTicket);
+        } catch (error) {
+            next(error);
+        }
+    }
     public getAllTickets = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const tickets = await this.TicketService.getAllTickets();
